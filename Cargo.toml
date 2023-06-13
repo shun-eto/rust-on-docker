@@ -1,10 +1,10 @@
 [package]
-name = "rust-on-docker"
+name = "my_app"
 version = "0.1.0"
-edition = "2018"
+edition = "2021"
 
 [dependencies]
-axum = "0.6.1"
+axum = "0.5.17"
 tokio = { version = "1.21.2", features = ["full"] }
 serde = { version = "1.0.147", features = ["derive"] }
 tracing = "0.1.37"

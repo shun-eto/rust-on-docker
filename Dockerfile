@@ -1,4 +1,6 @@
-FROM rust:latest AS builder
+FROM rust:1.59-bullseye
+
+RUN apt-get update && apt-get install -y curl
 
 WORKDIR /app
 
@@ -6,12 +8,8 @@ COPY . .
 
 RUN cargo build --release
 
-FROM ubuntu:22.04
+# CMD ["./target/release/my_app"]
 
-WORKDIR /app
+EXPOSE 8080
 
-COPY --from=builder /app/target/release/rust-on-docker .
-
-EXPOSE 3000
-
-CMD ["./rust-on-docker"]
+ENTRYPOINT ["cargo", "run", "-r"]
